@@ -1,0 +1,75 @@
+:root {
+  --fontBase: "Poppins", Sans;
+  --blue: #3540d1;
+  --white: #ffffff;
+  --green: #42e2b8;
+  --focus: #777;
+  --error: #e74c3c;
+  --success: #2ecc71;
+  --black: #212121;
+}
+
+body {
+  background-color: var(--focus);
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.form {
+  padding: 30px 40px;
+}
+
+.form-container {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+
+.form-container input:focus {
+  outline: 0;
+  border-color: var(--focus);
+}
+
+.form-container.success input {
+  border-color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.form-container.error input {
+  border-color: var(--error);
+  border: 1px solid var(--error);
+}
+
+.form-container i {
+  visibility: hidden;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+}
+
+.form-container.success i.fa-check-circle {
+  color: var(--success);
+  visibility: visible;
+}
+
+.form-container.error i.fa-exclamation-circle {
+  color: var(--error);
+  visibility: visible;
+}
+
+.form-container small {
+  color: var(--error);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+}
+
+.form-container.error small {
+  visibility: visible;
+}
