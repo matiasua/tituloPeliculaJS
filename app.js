@@ -8,22 +8,35 @@ form.addEventListener('submit', (e) => {
 
 
 function searchTitle() {
-  const searchValue = search.value.trim();
-  console.log(searchValue);
-  if (searchValue === '') {
-    setErrorFor(search, 'El campo se encuentra vacio')
-  }else {
-    setSuccessFor(search);
-  }
-  const url = 'https://imdb-api.com/en/API/SearchTitle/k_asawf9nc/Matrix'
-  try {
-    fetch(url)
-      .then(response => response.json())
-      .then(json => { console.log(json) })
+    const searchValue = search.value.trim();
+    console.log(searchValue);
+    if (searchValue === '') {
+      setErrorFor(search, 'El campo se encuentra vacio')
+    }else {
+      setSuccessFor(search);
+    }
+    let url = `https://imdb-api.com/en/API/SearchTitle/k_asawf9nc/${searchValue}`
+    try {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => showData(data))
 
-  } catch (err) {
-    console.log(err);
-  }
+      const showData = (data) => {
+        console.log('Capturo respuesta')
+        console.log(data);
+        let { results, ...rest } = data;
+        console.log(results)
+        console.log('Despues del results')
+        let body = '';
+        for (let i = 0; i < data.length; i++) {
+          body += `<tr><td>${data[i].title} - ${data[i].description}</td></tr>`
+          }
+
+          document.getElementById('listData').innerHTML = body
+        }
+      } catch (err) {
+          console.log(err);
+    }
 
 }
 
