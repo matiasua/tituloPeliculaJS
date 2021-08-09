@@ -1,3 +1,4 @@
+
 const search = document.getElementById('searchTitle');
 const form = document.getElementById('form');
 
@@ -15,7 +16,7 @@ function searchTitle() {
     }else {
       setSuccessFor(search);
     }
-    let url = `https://imdb-api.com/en/API/SearchTitle/k_asawf9nc/${searchValue}`
+    let url = `https://imdb-api.com/en/API/SearchTitle/k_w0xo5scd/${searchValue}`
     try {
       fetch(url)
         .then(response => response.json())
@@ -28,8 +29,8 @@ function searchTitle() {
         console.log(results)
         console.log('Despues del results')
         let body = '';
-        for (let i = 0; i < data.length; i++) {
-          body += `<tr><td>${data[i].title} - ${data[i].description}</td></tr>`
+        for (let i = 0; i < results.length; i++) {
+          body += `<tr><td>${results[i].title} - ${results[i].description}</td></tr>`
           }
 
           document.getElementById('listData').innerHTML = body
@@ -52,4 +53,37 @@ function setSuccessFor(input) {
   formControl.className = "form-container success";
 }
 
-searchTitle()
+  // searchTitle()
+
+
+// function getSearchTitle() {
+//   return Promise.resolve({
+//     errorMessage: "Error XD",
+//     expression: "Matrix",
+//     searchType: 'Title',
+//     results: [
+//       {
+//         description: "(1999)",
+//         id: "tt01923",
+//         image: "https://imdb-api.com/images/original/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.7273_AL_.jpg",
+//         resultType: "Title",
+//         title: "The Matrix"
+//       },
+//       {
+//         description: "(2000)",
+//         id: "tt013",
+//         image: "https://imdb-api.com/images/original/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.7273_AL_.jpg",
+//         resultType: "Title",
+//         title: "The Matrix"
+//       },
+//       {
+//         description: "(2003)",
+//         id: "tt01330956",
+//         image: "https://imdb-api.com/images/original/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_Ratio0.7273_AL_.jpg",
+//         resultType: "Title",
+//         title: "The Matrix"
+//       }
+
+//     ]
+//   });
+// }
