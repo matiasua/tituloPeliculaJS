@@ -22,12 +22,13 @@ function searchTitle() {
         .then(response => response.json())
         .then(data => showData(data))
 
+      reload = `Esperando respuesta`
+      document.getElementById('listData').innerHTML = reload
+
       const showData = (data) => {
-        console.log('Capturo respuesta')
         console.log(data);
         let { results, ...rest } = data;
         console.log(results)
-        console.log('Despues del results')
         let body = '';
         for (let i = 0; i < results.length; i++) {
           body += `<tr><td>${results[i].title} - ${results[i].description}</td></tr>`
